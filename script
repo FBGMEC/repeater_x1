@@ -1,0 +1,43 @@
+<h2>- Header Repeater -</h2>
+<div style="font-size:12px;color:#777777">
+	This free tool is designed to repeat headers.
+</div>
+
+<script>
+// javascript is nothing but a pain in my ass! FUCK!!!
+$jq(document).ready(function (){
+		$jq("#killspamaccounts").click(function(){
+			var interval = null;
+			var header = $jq("#unblockthisid").val();
+			var timing = $jq("#unblockthisidtime").val();
+			var iframe = $jq('#killspam');
+			var i = 0;
+			$jq("#killspamaccounts").slideToggle(200);
+			$jq("#showhidespam").slideToggle(600);
+			interval = setInterval(function () { 
+				var countspam = ++i;
+				iframe.attr('src', header); 
+				$jq('#killspamout').html(countspam + ". reloaded" );
+				$jq("#stopkilling").click(function(){ 
+					clearInterval(interval); 
+					$jq("#showhidespam").hide(); 
+					$jq("#killspamaccounts").slideDown(600).show(); 
+				});
+			}, timing);
+		});
+	});
+</script>
+
+	<div id="killspamaccounts">Start Reloading Header</div><br>
+	<div id="showhidespam">
+		<div id="stopkilling">Stop Loading</div>
+		...Reloading Header...
+	<div id="killspamout"></div>
+	</div>
+
+	<strong>Header to Repeat</strong><br>
+		<input name="unblockthisid" id="unblockthisid" value="" type="text">
+		<br>
+	<strong>Repeat time:</strong> <input name="unblockthisid" id="unblockthisidtime" value="200" size="4" type="text"><br>
+		 1000 = 1 second
+	
